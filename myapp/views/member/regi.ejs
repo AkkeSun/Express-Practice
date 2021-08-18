@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+  <% include ../common/head %>
+  <body>
+    <% include ../common/header %> 
+    <h1><%= title %></h1>
+    <p>Welcome to <%= title %></p>
+
+    <form id='frm' action='/users/regiAf'>
+        <input type='text' placeholder="아이디" name='id' id='id'>
+        <br>
+        <input type='password' placeholder="비밀번호" name='pwd1' id='pwd1'>
+        <br>
+        <input type='password' placeholder="비밀번호" name='pwd2' id='pwd2'>
+        <br>
+        <input type='button' id='submitBtn' value='regi'>
+    </form>
+    
+    <% include ../common/footer %>
+
+    <script>
+      $(function(){
+
+        $("#submitBtn").click(function(){
+
+          let data = $("#frm").serialize();
+          let callback = ajaxComm("/users/regiAf", data, "", "");
+          callback.done(function(data){
+            
+            alert(data.msg);
+
+            if(data.code != undefined){
+              let id = "";
+
+              if(data.code == "1")
+                id="#pwd2";
+              else if(data.code == "2")
+                id="#pwd1";              
+              else if(data.code == "3")
+                id="#id";   
+
+              $(id).val("");
+              $(id).focus();
+            }
+            else
+              location.href="/";            
+          });
+        })
+      });
+    </script>
+
+  </body>
+</html>
+
