@@ -1,9 +1,14 @@
 var express = require('express');
 var router = express.Router();
 
-/* GET home page. */
 router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Express' });
+  
+  // 최초 로드
+  if(req.login == undefined)
+    res.render('index', { title: 'Express', login:false});
+  else
+    res.render('index', { title: 'Express', login:req.login});
 });
+
 
 module.exports = router;
