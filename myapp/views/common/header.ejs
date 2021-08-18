@@ -1,0 +1,29 @@
+
+<h1>HEADER</h1>
+<input type='hidden' id='loginCh' value=<%=login %>>
+<div id='loginBf'>
+    <a href='/users' id='loginbtn'>login</a>
+    <a href='/users/regi' id='regibtn'>regi</a>
+</div>
+<div id='loginAf'>
+    <a href='/users/logout' id='logout'>logout</a>
+    <a href='/file' id='fileUpload'>file upload</a>
+</div>
+<a href='/file/list'>file list</a>
+
+<br><br><br>
+
+<script>
+    
+    $(function(){
+        $("#loginAf").hide();
+        $("#loginBf").hide();
+        
+        if( $("#loginCh").val() == "true")
+            $("#loginAf").show();
+        else
+            $("#loginBf").show();
+        
+    });
+        
+</script>
