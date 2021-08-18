@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+  <% include ../common/head %>
+  <body>
+    <% include ../common/header %> 
+
+    <h3>One File</h3>
+    <form action="/file/upload/oneFile" method='post' enctype='multipart/form-data' >
+        <input type='file' name='singleFile'>
+        <input type='hidden' name='uploadName' value='singleFile'>
+        <input type='submit' value='submit'>
+    </form>
+
+    <h3>Multi File Same Name</h3>
+    <form action="/file/upload/multiFileSameName"  method='post' enctype='multipart/form-data'>
+        <input type='file' name='multiFile'>
+        <input type='submit' value='submit'>
+    </form>
+
+    <h3>Multi File Different Name</h3>
+    <form action="/file/upload/multiFileDifferentName"  method='post' enctype='multipart/form-data'>
+        <input type='file' name='f1'>
+        <input type='file' name='f2'>
+        <input type='submit' value='submit'>
+    </form>
+   
+    <% include ../common/footer %>
+ 
+  </body>
+</html>
