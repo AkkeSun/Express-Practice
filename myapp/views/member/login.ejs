@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+  <% include ../common/head %>
+  <body>
+    <% include ../common/header %> 
+    <h1><%= title %></h1>
+
+    <form id='frm' action='/users/loginAf' method=post>
+        <input type='text' placeholder="아이디" name='id'>
+        <br>
+        <input type='password' placeholder="비밀번호" name='pwd'>
+        <br>
+        <input type='submit' value='login'>
+    </form>
+    
+    <% include ../common/footer %>
+  </body>
+</html>
+
