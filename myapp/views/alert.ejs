@@ -1,0 +1,20 @@
+<input type=hidden id='code' value= <%= code %> >
+
+<script src="/jquery/jquery.js"></script>
+
+<script>
+    let code = $('#code').val();
+
+    if(code == 'login'){
+        alert('가입된 정보가 없습니다');
+        location.href='/users';
+    } 
+    else if(code == 'upload_success'){
+        alert("업로드 성공");
+        location.href='/';
+    }
+    else if(code == 'upload_fail'){
+        alert("이미지 파일만 업로드 가능합니다");
+        location.href='/file';
+    }
+</script>
