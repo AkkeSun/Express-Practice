@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+  <% include ../common/head %>
+  <body>
+    <% include ../common/header %> 
+
+    <h3>FileList</h3>
+    <table>
+        <thead>
+            <th>작성자</th>
+            <th>파일명</th>
+            <th>다운로드</th>
+        </thead>
+        <tbody id='tableAppend'>
+        </tbody>
+    </table>
+
+    <script>
+        $(function(){
+
+            let callback = ajaxComm('/file/getList', "", "", "get");
+            callback.done((data) => {
+                let HTML = "";
+                data.forEach(element => {
+                    let jsonObject = JSON.parse(element.filejson);
+                    HTML += 
+                    `
+                    <tr>
+                        <td>${element.id}</td>
+                        <td>${jsonObject.originalname}</td>
+                        <td><input type='button' class='download' value='다운로드' data-fname=${jsonObject.filename}></td>
+                    <tr>
+                        `
+                    });
+                $("#tableAppend").append(HTML);
+                $("#tableAppend").myPlugin();
+                $(".download").click(function(){
+                    let fname = $(this).attr("data-fname");
+                    location.href=`/file/download/${fname}`;
+                })
+
+
+            });
+        })
+
+    </script>
+   
+    <% include ../common/footer %>
+ 
+  </body>
+</html>
